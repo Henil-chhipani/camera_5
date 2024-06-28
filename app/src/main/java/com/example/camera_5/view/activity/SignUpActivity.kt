@@ -1,5 +1,6 @@
 package com.example.camera_5
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -40,13 +41,28 @@ class SignUpActivity : AppCompatActivity() {
                 authViewModel.signup(name, email, password)
 
             } else {
-                Toast.makeText(this, "Fill all details", Toast.LENGTH_SHORT).show()
+               Snackbar.make(binding.signUpBtn,"Fill all the details",Snackbar.LENGTH_SHORT).show()
             }
+        }
+
+        binding.loginBtn.setOnClickListener{
+            var intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
         }
 
         authViewModel.user.observe(this, Observer { user ->
             if (user != null) {
-                Snackbar.make(this,, "Registration successful", Snackbar.LENGTH_SHORT).show()
+                var intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+
+                Snackbar.make( binding.signUpBtn,"Registration successful", Snackbar.LENGTH_SHORT).show()
+            }
+        })
+
+        authViewModel.authError.observe(this, Observer { error ->
+            if (error != null) {
+                Snackbar.make(binding.signUpBtn, error, Snackbar.LENGTH_SHORT).show()
             }
         })
     }

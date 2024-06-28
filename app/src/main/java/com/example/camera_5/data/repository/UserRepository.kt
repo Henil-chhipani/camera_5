@@ -1,5 +1,6 @@
 package com.example.camera_5.data.repository
 
+import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.tasks.await
@@ -32,4 +33,19 @@ private  val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
     fun getCurrentUser(): FirebaseUser? {
         return firebaseAuth.currentUser
     }
-}
+
+    fun resetPassword(email: String, callback: (String?) -> Unit) {
+        firebaseAuth.sendPasswordResetEmail(email)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    callback("Password reset email sent.")
+                } else {
+                    callback("Error: ${task.exception?.message}")
+                }
+            }
+    }
+
+
+
+
+    }

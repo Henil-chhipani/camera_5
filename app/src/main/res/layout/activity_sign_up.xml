@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_46sdp"
+        android:layout_marginTop="@dimen/_60sdp"
         android:layout_marginEnd="@dimen/_100sdp"
         android:text="Welcome,"
         android:textColor="@color/black"
@@ -26,16 +26,17 @@
         android:id="@+id/logintxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_76sdp"
+        android:layout_marginTop="@dimen/_90sdp"
+        android:layout_marginEnd="@dimen/_30sdp"
         android:text="Sing up to continue"
         android:textColor="@color/black"
-        android:textSize="@dimen/_25ssp"
+        android:textSize="@dimen/_20ssp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:layout_marginTop="@dimen/_130sdp"
+        android:layout_marginTop="@dimen/_100sdp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -88,6 +89,7 @@
                 android:inputType="phone" />
         </com.google.android.material.textfield.TextInputLayout>
 
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/signUpBtn"
             android:layout_width="wrap_content"
@@ -97,6 +99,15 @@
             android:textColor="@color/black"
             android:textStyle="bold"
             android:layout_gravity="center"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Already have account login..."
+            android:textStyle="italic"
+            android:id="@+id/loginBtn"
+            android:layout_marginTop="@dimen/_20sdp"
             />
     </LinearLayout>
 
