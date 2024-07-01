@@ -7,8 +7,6 @@ import android.os.Looper
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import com.example.camera_5.data.AuthViewModelFactory
 import com.example.camera_5.data.repository.UserRepository

@@ -1,8 +1,9 @@
-package com.example.camera_5.view.Activity
+package com.example.camera_5.data.model
 
 data class UserModel (
-    val uid: Int,
+    val uid: String,
     val name: String,
     val email: String,
+val image : String
 
 )

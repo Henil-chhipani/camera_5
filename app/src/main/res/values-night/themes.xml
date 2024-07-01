@@ -4,5 +4,9 @@
         <!-- Customize your dark theme here. -->
 
         <item name="colorPrimary">@color/primary</item>
+
     </style>
+
+
+    <style name="Theme.Camera_5" parent="Base.Theme.Camera_5" />
 </resources>

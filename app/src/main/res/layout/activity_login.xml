@@ -57,6 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Enter Email"
+                android:textColor="@color/black"
                 android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -72,6 +73,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Enter Password"
                 android:inputType="textPassword"
+                android:textColor="@color/black"
                 android:maxLength="10" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -80,6 +82,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Forgot password ?"
+            android:textColor="@color/grey"
             android:textStyle="italic" />
 
         <com.google.android.material.button.MaterialButton
@@ -96,11 +99,23 @@
             android:id="@+id/signUpBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/grey"
             android:layout_marginTop="@dimen/_20sdp"
             android:text="Doesn't have account sing up..."
             android:textStyle="italic" />
 
     </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/lodingIcon"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_100sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
     <FrameLayout
         android:id="@+id/viewPager"

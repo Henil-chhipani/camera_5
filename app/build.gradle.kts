@@ -48,6 +48,8 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.firebase.firestore.ktx)
     implementation(libs.androidx.databinding.runtime)
+    implementation(libs.firebase.database.ktx)
+    implementation(libs.firebase.crashlytics.buildtools)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -69,5 +71,28 @@ dependencies {
     // Kotlin Coroutines
     implementation (libs.kotlinx.coroutines.core)
     implementation (libs.kotlinx.coroutines.android)
+
+//    val cameraxVersion = "1.3.0-rc01"
+//// camera x lib for camera control
+//    implementation(libs.camera.core)
+//    implementation(libs.androidx.camera.camera2)
+//    implementation(libs.androidx.camera.lifecycle)
+//    implementation(libs.androidx.camera.video)
+//    implementation (libs.androidx.camera.extensions.v100alpha28)
+//    implementation(libs.androidx.camera.view)
+//    implementation(libs.androidx.camera.extensions)
+
+    val cameraVersion = "1.3.4"
+    implementation("androidx.camera:camera-lifecycle:$cameraVersion")
+    implementation("androidx.camera:camera-camera2:$cameraVersion")
+    implementation("androidx.camera:camera-view:$cameraVersion")
+    implementation("androidx.camera:camera-core:$cameraVersion")
+
+    implementation ("com.google.guava:guava:31.0.1-android")
+
+
+    implementation (libs.glide)
+    annotationProcessor (libs.compiler)
+
 
 }

@@ -2,6 +2,7 @@ package com.example.camera_5
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -25,7 +26,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding= ActivityLoginBinding.inflate(layoutInflater)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val userRepository = UserRepository()
@@ -39,35 +40,53 @@ class LoginActivity : AppCompatActivity() {
             var email = binding.emailTxtInput.text.toString()
             var password = binding.passwordTxtInput.text.toString()
 
-            if(email.isNotEmpty() || password.isNotEmpty()){
+            binding.lodingIcon.visibility = View.VISIBLE
 
-                authViewModel.login(email,password)
-            }else{
-                Snackbar.make( binding.loginBtn," Fill all details", Snackbar.LENGTH_SHORT).show()
+            if (email.isNotEmpty() || password.isNotEmpty()) {
+
+                authViewModel.login(email, password) { success, message ->
+                    binding.lodingIcon.visibility = View.GONE
+                    if (success) {
+                        Snackbar.make(
+                            binding.signUpBtn,
+                            "Login successful",
+                            Snackbar.LENGTH_SHORT
+                        ).show()
+
+                    } else {
+                        Snackbar.make(
+                            binding.signUpBtn,
+                            message ?: "Login failed",
+                            Snackbar.LENGTH_SHORT
+                        ).show()
+                    }
+
+                }
+            } else {
+                Snackbar.make(binding.loginBtn, " Fill all details", Snackbar.LENGTH_SHORT).show()
             }
         }
 
-        binding.forgotPassword.setOnClickListener{
-          // do it with view pager fragment name is frogot password
-            val transaction = supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.viewPager, ForgotPasswordFragment())
-            transaction.addToBackStack(null)
-            transaction.commit()
+        binding.forgotPassword.setOnClickListener {
+            // do it with view pager fragment name is frogot password
+                val transaction = supportFragmentManager.beginTransaction()
+                transaction.replace(R.id.viewPager, ForgotPasswordFragment())
+                transaction.addToBackStack(null)
+                transaction.commit()
         }
 
-        binding.signUpBtn.setOnClickListener{
+        binding.signUpBtn.setOnClickListener {
             var intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
             finish()
         }
 
-        authViewModel.user.observe(this, Observer { user ->
-            if (user != null) {
-                // Navigate to next screen
-                var intent = Intent(this,MainActivity::class.java)
+
+        authViewModel.islogin.observe(this, Observer {
+            if (it == true) {
+                var intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()
-                Snackbar.make(binding.loginBtn, "Login successful", Snackbar.LENGTH_SHORT).show()
             }
         })
 
@@ -76,8 +95,6 @@ class LoginActivity : AppCompatActivity() {
                 Snackbar.make(binding.loginBtn, error, Snackbar.LENGTH_SHORT).show()
             }
         })
-
-
 
 
     }
